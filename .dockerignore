@@ -1,0 +1,12 @@
+venv/
+.venv/
+.env
+.git/
+__pycache__/
+*.pyc
+.pytest_cache/
+frontend/node_modules/
+frontend/src/
+frontend/public/
+data/resumes.csv
+data/Resume.csv

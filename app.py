@@ -1,8 +1,11 @@
 """SmartHire API.  Run:  uvicorn app:app --reload   then open http://127.0.0.1:8000"""
 import json
+import os
+import time
+from collections import defaultdict, deque
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI, File, Form, HTTPException, UploadFile
+from fastapi import FastAPI, File, Form, HTTPException, Request, UploadFile
 from fastapi.responses import FileResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 
@@ -12,6 +15,22 @@ from smarthire.matcher import get_matcher
 from smarthire.skills import roles
 
 MAX_BYTES = 5 * 1024 * 1024
+RATE_LIMIT = int(os.getenv("RATE_LIMIT_PER_HOUR", "20"))   # analyses per IP per hour; 0 turns it off
+_hits = defaultdict(deque)
+
+
+def check_rate_limit(request: Request):
+    """Simple in-memory limiter so a public demo cannot be used up (or drain an LLM key) by one visitor."""
+    if RATE_LIMIT <= 0:
+        return
+    fwd = request.headers.get("x-forwarded-for", "")
+    ip = fwd.split(",")[0].strip() or (request.client.host if request.client else "unknown")
+    now, q = time.time(), _hits[ip]
+    while q and now - q[0] > 3600:
+        q.popleft()
+    if len(q) >= RATE_LIMIT:
+        raise HTTPException(429, f"Rate limit reached ({RATE_LIMIT} analyses per hour). Please try again later.")
+    q.append(now)
 
 
 @asynccontextmanager
@@ -46,7 +65,8 @@ def list_roles():
 
 
 @app.post("/api/analyze")
-async def analyze(file: UploadFile = File(...), role_id: str = Form(""), jd_text: str = Form("")):
+async def analyze(request: Request, file: UploadFile = File(...), role_id: str = Form(""), jd_text: str = Form("")):
+    check_rate_limit(request)
     data = await file.read()
     if not data:
         raise HTTPException(400, "The uploaded file is empty.")

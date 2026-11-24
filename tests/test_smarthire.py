@@ -134,3 +134,14 @@ def test_classifier_agent_skips_without_model(monkeypatch, tmp_path):
     assert report["ml"] == {"available": False, "predictions": []}
     assert classifier.model_card() == {"available": False}
     classifier._model.cache_clear()
+
+
+def test_rate_limit_blocks_after_limit(monkeypatch):
+    import app as appmod
+    from fastapi.testclient import TestClient
+    monkeypatch.setattr(appmod, "RATE_LIMIT", 2)
+    appmod._hits.clear()
+    client = TestClient(appmod.app)
+    codes = [client.post("/api/analyze", files={"file": ("r.txt", SAMPLE.encode())}).status_code for _ in range(3)]
+    assert codes == [200, 200, 429]
+    appmod._hits.clear()
