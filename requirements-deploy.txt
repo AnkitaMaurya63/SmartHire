@@ -1,0 +1,14 @@
+# Lightweight set for small free hosts (512 MB RAM): no PyTorch / sentence-transformers.
+# The app falls back to TF-IDF embeddings automatically (set EMBEDDINGS=tfidf).
+fastapi
+uvicorn
+python-multipart
+pypdf
+numpy
+scikit-learn==1.9.1
+faiss-cpu
+langgraph
+requests
+python-dotenv
+joblib
+pandas

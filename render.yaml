@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: smarthire
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements-deploy.txt
+    startCommand: uvicorn app:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.8
+      - key: EMBEDDINGS
+        value: tfidf
+      - key: RATE_LIMIT_PER_HOUR
+        value: "20"
