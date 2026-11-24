@@ -1,0 +1,47 @@
+{
+  "best_model": "TF-IDF + Logistic Regression",
+  "train_size": 130,
+  "test_size": 33,
+  "classes": [
+    "Advocate",
+    "Arts",
+    "Automation Testing",
+    "Blockchain",
+    "Business Analyst",
+    "Civil Engineer",
+    "Data Science",
+    "Database",
+    "DevOps Engineer",
+    "DotNet Developer",
+    "ETL Developer",
+    "Electrical Engineering",
+    "HR",
+    "Hadoop",
+    "Health and fitness",
+    "Java Developer",
+    "Mechanical Engineer",
+    "Network Security Engineer",
+    "Operations Manager",
+    "Python Developer",
+    "SAP Developer",
+    "Sales",
+    "Testing",
+    "Web Designing"
+  ],
+  "results": {
+    "TF-IDF + Logistic Regression": {
+      "accuracy": 0.9091,
+      "top3_accuracy": 0.9394,
+      "macro_f1": 0.869,
+      "cv4_accuracy_mean": 0.9142,
+      "cv4_accuracy_std": 0.0364
+    },
+    "TF-IDF + Linear SVM": {
+      "accuracy": 0.9091,
+      "top3_accuracy": 0.9697,
+      "macro_f1": 0.869,
+      "cv4_accuracy_mean": 0.902,
+      "cv4_accuracy_std": 0.0454
+    }
+  }
+}

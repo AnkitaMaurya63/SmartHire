@@ -1,0 +1,55 @@
+{
+  "resumes": 52,
+  "embeddings": "Sentence-Transformers (all-MiniLM-L6-v2)",
+  "index": "FAISS",
+  "mapping": {
+    "Data Science": [
+      "cv-engineer",
+      "data-scientist",
+      "ml-engineer",
+      "nlp-engineer"
+    ],
+    "Java Developer": [
+      "java-developer",
+      "sde"
+    ],
+    "Python Developer": [
+      "django-developer",
+      "python-backend",
+      "sde"
+    ],
+    "DevOps Engineer": [
+      "cloud-engineer",
+      "devops",
+      "mlops"
+    ],
+    "Web Designing": [
+      "frontend-react",
+      "fullstack"
+    ],
+    "Hadoop": [
+      "data-engineer"
+    ],
+    "ETL Developer": [
+      "data-engineer"
+    ]
+  },
+  "results": {
+    "keywords only": {
+      "top1": 0.404,
+      "top3": 0.769
+    },
+    "embeddings only": {
+      "top1": 0.308,
+      "top3": 0.673
+    },
+    "hybrid (SmartHire)": {
+      "top1": 0.404,
+      "top3": 0.712
+    },
+    "random baseline": {
+      "top1": 0.134,
+      "top3": 0.358
+    }
+  }
+}

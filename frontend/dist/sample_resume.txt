@@ -1,0 +1,19 @@
+Rahul Verma
++91-9876543210 | rahul.verma@example.com | github.com/rahulverma | linkedin.com/in/rahulverma
+CAREER OBJECTIVE
+B.Tech CSE student interested in machine learning and backend development, looking for an AI/ML developer internship.
+TECHNICAL SKILLS
+Languages: Python, C++, SQL
+AI / ML: Machine Learning, scikit-learn, NumPy, Pandas, Deep Learning, NLP
+Backend: FastAPI, REST APIs, Git, GitHub
+PROJECTS
+House Price Predictor | github.com/rahulverma/house-price | Python, scikit-learn
+• Built a regression model on 20,000 housing records reaching 0.87 R2 score.
+• Created a FastAPI service that returns predictions for new inputs.
+Movie Recommender | github.com/rahulverma/movie-recommender | Python, Pandas
+• Developed a content-based recommender over 9,000 movies using TF-IDF and cosine similarity.
+• Worked on a simple web page to show the results.
+Chat Helper | Python
+• Worked on a chatbot for the college.
+EDUCATION
+B.Tech Computer Science | ABC University | 2023 - 2027 | CGPA 8.4
