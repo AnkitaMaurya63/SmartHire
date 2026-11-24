@@ -1,5 +1,7 @@
 # SmartHire: Multi-Agent Resume Intelligence
 
+**Live demo:** https://smarthire-gmh9.onrender.com/ (free tier: the first load after idle can take about a minute; the demo uses TF-IDF embeddings, the local install uses Sentence-Transformers)
+
 SmartHire reads a resume (PDF or TXT) and runs it through a **LangGraph workflow of ten cooperating agents**. It parses the resume, matches it to job roles with **vector search (embeddings + FAISS)**, scores it like an ATS, finds skill gaps, rewrites weak bullets with an **LLM plus a fabrication-checking critic**, and prepares interview questions from the candidate's own projects. Results stream live into a web UI served by **FastAPI**.
 
 ![SmartHire dashboard](docs/screenshot.png)
